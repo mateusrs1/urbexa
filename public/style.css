@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+
+.cal-sans-regular {
+    font-family: "Cal Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+main{
+    max-width: 1920px;
+    min-width: 300px;
+    margin: 0px;
+    margin: auto;
+    border-radius: 10px;
+    
+}
+
+.logo{
+    transition: 0.3s;
+    width:15vh;
+    margin-top: 7px;
+    margin-left: 25px;
+    position: absolute;
+}
+
+.logo:hover{
+    transition: 0.3s;
+    filter: drop-shadow(-5px 5px 5px rgb(88, 88, 88));
+}
+
+body{
+    background-color: rgb(240, 240, 240);
+    margin:0;
+    padding: 0px;
+    
+}
+
+.headerbuttons{
+    
+    list-style: none;
+    margin:0px;
+    margin-left:65%;
+    margin-right: 10px;
+    
+}
+
+.header{
+    background-color: 	#A8A8A8;
+    align-items: center;
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+
+ ul li{
+    cursor: pointer;
+    min-width: 400px;
+    display:inline;
+}
+
+ul li a{
+    font-family: "Cal Sans";
+    font-size: 24pt;
+    
+    margin: 30px;
+    
+}
+
+.head-btn{
+    text-decoration: none;
+    color:black;
+}
+
+.container{
+    display: flex;
+}
+
+.box h1{
+    font-family: "cal sans";
+    margin:0
+}
+.box{
+    font-family: "cal sans";
+    height: 93vh;
+    display: flex;
+}
+.left{
+    background-color: white;
+    flex:30;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+}
+
+.left h1{
+    top: 10px;
+    background-color: white;
+}
+
+.right{
+    background-color: lightgray;
+    flex:35;
+
+   
+}
