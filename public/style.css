@@ -103,3 +103,7 @@ ul li a{
 
    
 }
+
+.Carousel img{
+    width: 100%; 
+}
