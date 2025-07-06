@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Cal Sans", sans-serif;
+    background: linear-gradient(145deg, #7c7c7c, #d3d3d3);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-container {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-container h1 {
+    text-align: center;
+    font-size: 32px;
+    color: #111827;
+    margin-bottom: 20px;
+}
+
+
+
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.auth-container label {
+    font-weight: 600;
+    color: #374151;
+    margin: 0px;
+    padding: 0px;
+}
+
+.auth-container input[type="text"],
+.auth-container input[type="password"],
+.auth-container input[type="email"] {
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: border 0.3s ease;
+    width: 400px;
+}
+
+.auth-container input:focus {
+    border-color: #3b82f6;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.auth-container button {
+    padding: 12px;
+    background-color: #111827;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 400px;
+}
+
+.auth-container button:hover {
+    background-color: #1f2937;
+}
+
+.auth-container .switch-link {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.auth-container .switch-link a {
+    color: #1d4ed8;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-container .switch-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+
+    .auth-container input[type="text"],
+    .auth-container input[type="password"],
+    .auth-container input[type="email"],
+    .auth-container button {
+        width: 100%;
+        max-width: 350px;
+    }
+}

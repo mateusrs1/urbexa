@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+
+
+.cal-sans-regular {
+    font-family: "Cal Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+main {
+    max-width: 1920px;
+    min-width: 300px;
+    margin: 0px;
+    margin: auto;
+    border-radius: 10px;
+
+}
+
+.perfil {
+    width: 33px;
+    margin: 0;
+    padding: 0;
+    margin-top: -5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.logo:hover {
+    transition: 0.3s;
+    filter: drop-shadow(-5px 5px 5px rgb(88, 88, 88));
+}
+
+body {
+    background-color: rgb(240, 240, 240);
+    margin: 0;
+    padding: 0px;
+
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #999;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.header .logo {
+    width: 100px;
+    height: auto;
+}
+
+.headerbuttons {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    padding-top: 5px;
+    margin: 0;
+}
+
+.li-title {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-family: "Cal Sans", sans-serif;
+    font-size: 16pt;
+
+}
+
+.li-title:hover {
+    transition: 0.3s;
+    filter: drop-shadow(-5px 5px 5px rgb(88, 88, 88));
+}
+
+.shopcart {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-family: "Cal Sans", sans-serif;
+    font-size: 16pt;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.container {
+    display: flex;
+}
+
+.box h1 {
+    font-family: "cal sans";
+    margin: 0
+}
+
+.box {
+    font-family: "cal sans";
+    height: 93vh;
+    display: flex;
+}
+
+.left {
+    background-color: white;
+    flex: 30;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    filter: drop-shadow(2px 2px 5px gray)
+}
+
+.left h1 {
+    background-color: white;
+    /*  animation-name: drop;*/
+
+}
+
+@keyframes drop {
+    from {
+        margin-bottom: -50px;
+    }
+
+    to {
+        margin-bottom: 0px;
+    }
+
+}
+
+
+.right {
+    background-color: lightgray;
+    flex: 35;
+}
+
+.Carousel img {
+    transition: 0.5s;
+    width: 100%;
+    filter: opacity(1) saturate(0.2);
+    animation-name: carousel;
+    animation-duration: 1s;
+}
+
+@keyframes carousel {
+    from {
+        filter: opacity(0) saturate(1)
+    }
+
+    to {
+        filter: opacity(1) saturate(0.2)
+    }
+
+}
+
+.textcarousel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

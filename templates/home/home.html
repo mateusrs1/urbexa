@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+
+</head>
+
+<body>
+    <main>
+        <nav>
+            <Header>
+                <div class="header">
+                    <a href="">
+                        <img class="logo" src="{% static 'images/logo.png' %}">
+                    </a>
+                    <div class="nav-right">
+                        <ul class="headerbuttons">
+                            <li><a class="head-btn li-title" href="product.html">Product</a></li>
+                            <li><a class="li-title" onclick="moveimg()">About</a></li>
+                            <li><a class="li-title" href="cart">cart ˅</a></li>
+                            {%if user.is_authenticated%} <li><a href="login" class="li-title">{{ username }}</a></li>
+                            {%else%} <a class="li-title" href="login">login</a> {%endif%}
+                            <a href="login"><img class="perfil" src="{% static 'images/user-perfil.png' %}"></a>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </Header>
+            <div class="container">
+                <div class="box left">
+                    <h1>Fashion</h1>
+                </div>
+                <div class="box right">
+                    <h1>This is Urbexa</h1>
+                </div>
+            </div>
+            <div class="hero-div">
+                <div class="Carousel ">
+                    <img id="carousel-img" src="{% static 'images/AdobeStock_517876305_Preview.jpeg' %}" alt="foto">
+                </div>
+
+            </div>
+        </nav>
+    </main>
+    <script src="{% static 'js/home.js' %}" defer>
+    </script>
+    <title>URBEXA</title>
+
+    <script>
+        const carouselimg = document.getElementById("carousel-img");
+
+        let carouselimage = [
+            "{% static 'images/AdobeStock_517876305_Preview.jpeg'%}",
+            "{% static 'images/1000_F_548477704_fYSpo7TRTtKlIq9C2QZ0KczwJWSSMJgl.jpg'%}",
+            "{% static 'images/1000_F_1055339745_yReUufviE4zl4Vtr4thcgzkbeqMWOZkq.jpg'%}",
+        ];
+
+
+
+        let currentindex = 0;
+        let anim = 0;
+
+        function moveimg() {
+
+            if (currentindex < carouselimage.length - 1) {
+                currentindex += 1;
+                anim += 1;
+            }
+            else { currentindex = 0 };
+            carouselimg.src = carouselimage[currentindex];
+        };
+
+
+        setInterval(
+            moveimg, 3000
+        );
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart - URBEXA</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <script>
+        function goto(url) {
+            window.location.href = "../..";
+        }
+    </script>
+
+</head>
+
+<body>
+    <Header>
+        <div class="header">
+            <div class="cont-logo">
+                <img onclick="goto()" class="logo" src="{% static 'images/logo.png' %}">
+            </div>
+
+        </div>
+    </Header>
+    <container class="cont-cart">
+        <div class="cart">
+            <h1>My Products</h1>
+
+        </div>
+    </container>
+
+</body>
+
+</html>
