@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - URBEXA</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+    <script>
+
+        function goto(url) {
+            window.location.href = "../products/addtocart";
+        }
+
+        function gotohome(url) {
+            window.location.href = "../..";
+        }
+
+    </script>
+</head>
+
+<body>
+    <Header>
+        <div class="header">
+            <div class="cont-logo">
+                <img onclick="gotohome()" class="logo" src="{% static 'images/logo.png' %}">
+            </div>
+
+        </div>
+        <script>
+
+        </script>
+    </Header>
+
+    <div class="cont-products">
+        {% for product in products %}
+        <div class="product-card">
+            <img class="product-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+            <h1 class="product-name">{{product.name}}</h1>
+            <h4 class="product-price">{{product.price}}</h4>
+            <button onclick="goto()" class="btn-buy">buy</button>
+        </div>
+        {%endfor%}
+    </div>
+
+</body>
+
+</html>

@@ -23,6 +23,7 @@ body {
 .cont-cart {
     padding-top: 20vh;
     display: flex;
+    animation: fadeIn 0.6s ease-in-out;
 }
 
 .cart {
@@ -36,11 +37,24 @@ body {
     animation: fadeIn 0.6s ease-in-out;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .cart h1 {
     text-align: center;
     font-size: 32px;
     color: #111827;
     margin-bottom: 20px;
+    animation: fadeIn 0.6s ease-in-out;
 }
 
 .header {
@@ -57,6 +71,55 @@ body {
     filter: drop-shadow(-5px 5px 5px rgb(88, 88, 88));
     cursor: pointer;
 }
+
+.btn-buy {
+    margin-top: auto;
+    padding: 12px;
+    background-color: #111827;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #111827;
+
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+
+}
+
+.cart-table th {
+    background-color: #f3f4f6;
+    font-weight: 600;
+}
+
+.cart-table tr:hover {
+    background-color: #f9fafb;
+}
+
+.cart-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
 
 
 

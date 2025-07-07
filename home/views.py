@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpRequest, HttpResponse
 from django.urls import path
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from home.models import Product
 from django.contrib import messages
 
 # Create your views here.
@@ -59,3 +60,14 @@ def cart_views(request):
     if request.user.is_authenticated:
         return render(request, 'cart/cart.html')
     return HttpResponse("404")
+
+def products_views(request):
+    products = Product.objects.all()
+    
+    return render(request, 'products/products.html', {'products': products})
+
+
+def addproductstocart_views(request):
+    
+
+    return redirect('cart')

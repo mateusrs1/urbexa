@@ -19,9 +19,9 @@
                     </a>
                     <div class="nav-right">
                         <ul class="headerbuttons">
-                            <li><a class="head-btn li-title" href="product.html">Product</a></li>
+                            <li><a class="head-btn li-title" href="products">Product</a></li>
                             <li><a class="li-title" onclick="moveimg()">About</a></li>
-                            <li><a class="li-title" href="cart">cart ˅</a></li>
+                            <li><a class="li-title" href="cart">cart</a></li>
                             {%if user.is_authenticated%} <li><a href="login" class="li-title">{{ username }}</a></li>
                             {%else%} <a class="li-title" href="login">login</a> {%endif%}
                             <a href="login"><img class="perfil" src="{% static 'images/user-perfil.png' %}"></a>
@@ -36,7 +36,7 @@
                     <h1>Fashion</h1>
                 </div>
                 <div class="box right">
-                    <h1>This is Urbexa</h1>
+                    <h1></h1>
                 </div>
             </div>
             <div class="hero-div">
