@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpRequest, HttpResponse
 from django.urls import path
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from home.models import Product
 from django.contrib import messages
@@ -9,12 +9,12 @@ from django.contrib import messages
 # Create your views here.
 
 def home_views(request):
-    username = 'none'
+    username = 'none',
     if request.user.is_authenticated:
             username = request.user.username
-
+    
     context = {
-        'username' : username
+        'username' : username,
     }
 
     return render(request, 'home/home.html', context)
@@ -56,6 +56,10 @@ def auth_views(request):
         return redirect('home')
     return HttpResponse("voce nao esta logado")
 
+def logout_views(request):
+    logout(request)
+    return redirect('home')
+
 def cart_views(request):
     if request.user.is_authenticated:
         return render(request, 'cart/cart.html')
@@ -71,3 +75,10 @@ def addproductstocart_views(request):
     
 
     return redirect('cart')
+
+def user_views(request):
+    if request.user.is_authenticated:
+        return render(request, 'login/user.html')
+    else: 
+        messages.error(request, 'You need to join.')
+        return redirect('home')
