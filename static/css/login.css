@@ -65,7 +65,8 @@ body {
 
 .auth-container input[type="text"],
 .auth-container input[type="password"],
-.auth-container input[type="email"] {
+.auth-container input[type="email"],
+.auth-container input[type="number"] {
     padding: 12px 14px;
     border: 1px solid #d1d5db;
     border-radius: 10px;
@@ -111,6 +112,15 @@ body {
 
 .auth-container .switch-link a:hover {
     text-decoration: underline;
+}
+
+#arrow {
+    transform: rotate(180deg);
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    font-size: 32pt;
+    cursor: pointer;
 }
 
 @media (max-width: 600px) {

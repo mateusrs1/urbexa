@@ -7,9 +7,15 @@
     <title>login - page</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <script>
+        function goto(url) {
+            window.location.href = url;
+        }
+    </script>
 </head>
 
 <body>
+    <p id="arrow" onclick="goto('../..')">➜</p>
     <main>
 
         <div class="auth-container">

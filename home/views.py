@@ -3,7 +3,7 @@ from django.http import HttpRequest, HttpResponse
 from django.urls import path
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from home.models import Product
+from home.models import Product, Cart
 from django.contrib import messages
 
 # Create your views here.
@@ -62,8 +62,31 @@ def logout_views(request):
 
 def cart_views(request):
     if request.user.is_authenticated:
-        return render(request, 'cart/cart.html')
-    return HttpResponse("404")
+        products = Cart.objects.filter(user_id=request.user)
+        total_cart_value = sum(item.totalvalue for item in products)
+        context= {
+            'products' : products,
+            'total' : total_cart_value
+        }
+        return render(request, 'cart/cart.html', context)
+    else:
+        messages.error(request, 'You need to join.')
+        return redirect('home')
+
+def cartadd_views(request, cart_id):
+    item = get_object_or_404(Cart, id=cart_id, user_id=request.user)
+    item.quant += 1
+    item.save()
+    return redirect('cart')
+
+def cartrem_views(request, cart_id):
+    item = get_object_or_404(Cart, id=cart_id, user_id=request.user)
+    if item.quant > 1:
+        item.quant -= 1
+        item.save()
+    else:
+        item.delete() 
+    return redirect('cart')
 
 def products_views(request):
     products = Product.objects.all()
@@ -71,14 +94,46 @@ def products_views(request):
     return render(request, 'products/products.html', {'products': products})
 
 
-def addproductstocart_views(request):
-    
+def addproductstocart_views(request, product_id):
+    if request.user.is_authenticated:
+        product = get_object_or_404(Product, id=product_id)
+        cart_item, created = Cart.objects.get_or_create(
+            user_id=request.user,
+            product_id=product,
+            defaults={
+                'quant': 1,
+                'unitval': product.price,
+                'totalvalue': product.price
+            }
+        )
+        if not created:
+            cart_item.quant += 1
+            cart_item.save()
 
-    return redirect('cart')
+        return redirect('cart')
+    else:
+        return redirect('login')
 
 def user_views(request):
+    
     if request.user.is_authenticated:
-        return render(request, 'login/user.html')
+        username = request.user.username
+        email = request.user.email
+        context = {
+        'username' : username,
+        'email' : email,
+        }
+        return render(request, 'login/user.html',context)
     else: 
         messages.error(request, 'You need to join.')
         return redirect('home')
+    
+def edituser_view(request):
+    if request.user.is_authenticated:
+        username = request.user.username
+        email = request.user.email
+        context = {
+        'username' : username,
+        'email' : email,
+        }
+        return render(request, 'login/edit.html',context)

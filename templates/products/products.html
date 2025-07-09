@@ -10,11 +10,7 @@
     <script>
 
         function goto(url) {
-            window.location.href = "../products/addtocart";
-        }
-
-        function gotohome(url) {
-            window.location.href = "../..";
+            window.location.href = url;
         }
 
     </script>
@@ -24,7 +20,7 @@
     <Header>
         <div class="header">
             <div class="cont-logo">
-                <img onclick="gotohome()" class="logo" src="{% static 'images/logo.png' %}">
+                <img onclick="goto('../..')" class="logo" src="{% static 'images/logo.png' %}">
             </div>
 
         </div>
@@ -39,7 +35,7 @@
             <img class="product-img" src="{{ product.image.url }}" alt="{{ product.name }}">
             <h1 class="product-name">{{product.name}}</h1>
             <h4 class="product-price">R$ {{product.price}}</h4>
-            <button onclick="goto()" class="btn-buy">buy</button>
+            <button onclick="goto('../products/addtocart/{{ product.id }}/')" class="btn-buy">buy</button>
         </div>
         {%endfor%}
     </div>

@@ -25,7 +25,7 @@
                         <li><a class="head-btn li-title" href="products">Product</a></li>
                         <li><a class="li-title" onclick="moveimg()">About</a></li>
                         <li><a class="li-title" href="cart">cart</a></li>
-                        {%if user.is_authenticated%} <li><a href="user" class="li-title">{{ username }}</a>
+                        {%if user.is_authenticated%} <li><a href="auth/user" class="li-title">{{ username }}</a>
                         </li>
                         {%else%} <li><a class="li-title" href="login">login</a></li> {%endif%}
                         <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>

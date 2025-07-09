@@ -5,13 +5,15 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cart - URBEXA</title>
+    <title>user - URBEXA</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
     <script>
         function goto(url) {
-            window.location.href = "../..";
+            window.location.href = url;
         }
+        
+
     </script>
 
 </head>
@@ -20,13 +22,32 @@
     <Header>
         <div class="header">
             <div class="cont-logo">
-                <img onclick="goto()" class="logo" src="{% static 'images/logo.png' %}">
+                <img onclick="goto('../..')" class="logo" src="{% static 'images/logo.png' %}">
             </div>
 
         </div>
     </Header>
-    <container class="cont-cart">
-        <h1>penis</h1>
+
+    <container class="cont-user">
+        <div class="user">
+            <div class="user-left">
+                <img class="img-perfil"
+                    src="{% static 'images/1000_F_548477704_fYSpo7TRTtKlIq9C2QZ0KczwJWSSMJgl.jpg' %}" alt="img">
+            </div>
+            <div class=" user-right">
+                <h1>{{username}}</h1>
+                <h4>Email:</h4>
+                <p>{{email}}</p>
+                <h4>Endereço:</h4>
+                <p><br></p>
+                <h4>Telefone:</h4>
+                <p> <br></p>
+                <div class="btn-div">
+                    <button onclick="goto('user/edit')" class="btn-edit">Edit</button>
+                    <button onclick="goto('../auth/logout')" class="btn-logout">Logout</button>
+                </div>
+            </div>
+        </div>
     </container>
 
 </body>
