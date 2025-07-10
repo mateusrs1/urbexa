@@ -40,6 +40,7 @@ body {
 
 
 .img-perfil {
+    cursor: pointer;
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
@@ -51,6 +52,7 @@ body {
 }
 
 .img-perfil:hover {
+    cursor: pointer;
     transform: translateY(-10px);
     transition: 0.3s;
 }
@@ -176,6 +178,8 @@ p {
     padding: 0px;
 
 }
+
+
 
 @media (max-width: 600px) {
     .btn {

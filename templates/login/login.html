@@ -14,7 +14,13 @@
     </script>
 </head>
 
+
 <body>
+    <div class="alertdiv">
+        {% for message in messages %}
+        <p class="alert" href="">{{message}}</p>
+        {% endfor %}
+    </div>  
     <p id="arrow" onclick="goto('../..')">➜</p>
     <main>
 
@@ -33,6 +39,21 @@
             </div>
         </div>
     </main>
+    <script>
+
+
+        const delay = 1500; // 3 segundos
+        const alerts = document.querySelectorAll('.alert');
+
+
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                alert.classList.add('hide');
+            }, delay);
+        });
+
+
+    </script>
 </body>
 
 </html>

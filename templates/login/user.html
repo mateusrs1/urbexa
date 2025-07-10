@@ -12,7 +12,7 @@
         function goto(url) {
             window.location.href = url;
         }
-        
+
 
     </script>
 
@@ -31,11 +31,12 @@
     <container class="cont-user">
         <div class="user">
             <div class="user-left">
-                <img class="img-perfil"
+                <img onclick="goto('../auth/user/edit/img')" class="img-perfil"
                     src="{% static 'images/1000_F_548477704_fYSpo7TRTtKlIq9C2QZ0KczwJWSSMJgl.jpg' %}" alt="img">
             </div>
             <div class=" user-right">
                 <h1>{{username}}</h1>
+
                 <h4>Email:</h4>
                 <p>{{email}}</p>
                 <h4>Endereço:</h4>
@@ -45,6 +46,7 @@
                 <div class="btn-div">
                     <button onclick="goto('user/edit')" class="btn-edit">Edit</button>
                     <button onclick="goto('../auth/logout')" class="btn-logout">Logout</button>
+
                 </div>
             </div>
         </div>

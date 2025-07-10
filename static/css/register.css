@@ -87,6 +87,7 @@ body {
     font-weight: 600;
     color: #374151;
     margin: 0px;
+    margin-left: 20px;
     padding: 0px;
 }
 
@@ -95,6 +96,7 @@ body {
 .auth-container input[type="email"],
 .auth-container input[type="number"] {
     padding: 12px 14px;
+    margin-left: 20px;
     border: 1px solid #d1d5db;
     border-radius: 10px;
     font-size: 15px;
@@ -119,25 +121,26 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 400px;
+    margin-left: 20px;
 }
 
 .auth-container button:hover {
     background-color: #1f2937;
 }
 
-.auth-container .switch-link {
+.auth-container .switch-linkmiddle {
     text-align: center;
     margin-top: 18px;
     font-size: 14px;
 }
 
-.auth-container .switch-link a {
+.auth-container .switch-linkmiddle a {
     color: #1d4ed8;
     text-decoration: none;
     font-weight: 600;
 }
 
-.auth-container .switch-link a:hover {
+.auth-container .switch-linkmiddle a:hover {
     text-decoration: underline;
 }
 
@@ -150,9 +153,61 @@ body {
     cursor: pointer;
 }
 
+.forms {
+    display: flex;
+}
 
+.auth-container .switch-link {
+    display: none;
+}
+
+#right-form {}
+
+#left-form {}
+
+@media (max-width: 1000px) {
+
+    .auth-container input[type="text"],
+    .auth-container input[type="password"],
+    .auth-container input[type="email"],
+    .auth-container input[type="number"] {
+        width: 200px;
+    }
+
+    .auth-container button {
+
+        width: 200px;
+
+    }
+}
 
 @media (max-width: 600px) {
+
+    .auth-container {
+        margin: 10vh 0px 10vh 0px;
+    }
+
+    .auth-container .switch-link {
+        display: block;
+        text-align: center;
+        margin-top: 18px;
+        font-size: 14px;
+    }
+
+    .auth-container .switch-link a {
+        color: #1d4ed8;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .auth-container .switch-link a:hover {
+        text-decoration: underline;
+    }
+
+    .auth-container .switch-linkmiddle {
+        display: none;
+    }
+
     .forms {
         display: block;
     }
@@ -161,8 +216,8 @@ body {
     .auth-container input[type="password"],
     .auth-container input[type="email"],
     .auth-container button {
-        width: 100%;
-        max-width: 350px;
+        width: 85%;
+
     }
 }
 

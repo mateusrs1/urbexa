@@ -14,5 +14,6 @@ urlpatterns = [
     path('products/addtocart/<int:product_id>/', views.addproductstocart_views, name="addtocart"),
     path('auth/logout', views.logout_views, name="logout"),
     path('auth/user', views.user_views, name="user"),
-    path('auth/user/edit', views.edituser_view, name="edit")
+    path('auth/user/edit', views.edituser_view, name="edit"),
+    path('auth/user/edit/img', views.edituserimg_view, name="edit_img")
 ]

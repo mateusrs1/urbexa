@@ -3,7 +3,7 @@ from django.http import HttpRequest, HttpResponse
 from django.urls import path
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from home.models import Product, Cart
+from home.models import Product, Cart, CustomUser
 from django.contrib import messages
 
 # Create your views here.
@@ -26,10 +26,10 @@ def login_views(request):
         password = request.POST['password']
 
         user = authenticate(request, username=username, password=password)
-
+        
         if user is not None:
             login(request, user)
-            return redirect("../..")
+            return redirect('home')
         else:
             messages.error(request, 'usuario not exist')
 
@@ -40,11 +40,15 @@ def register_views(request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
+        city = request.POST['city']
+        state = request.POST['state']
+        address = request.POST['address']
+        phone = request.POST['phone']
 
-        if User.objects.filter(username = username).exists():
+        if CustomUser.objects.filter(username = username).exists():
             return render(request, 'login/register.html', {"erro" : "user exists"})
         
-        user = User.objects.create_user(username=username, email=email, password=password)
+        user = CustomUser.objects.create_user(username=username, email=email, password=password, phone=phone, address=address, city=city, state=state)
         user.save()
 
         return redirect('login')
@@ -137,3 +141,7 @@ def edituser_view(request):
         'email' : email,
         }
         return render(request, 'login/edit.html',context)
+    
+def edituserimg_view(request):
+    
+    return redirect("user")

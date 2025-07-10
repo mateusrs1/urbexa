@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>register - page</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
     <script>
         function goto(url) {
             window.location.href = url;
@@ -19,20 +19,42 @@
     <main>
         <div class="auth-container">
             <h1>Register</h1><br>
-            {% if erro %}<p style="color: red;">{{ erro }}</p>{% endif %}
-            <form method="post">
-                {% csrf_token %}
-                <label>Username:</label><br>
-                <input type="text" name="username"><br>
-                <label>Password:</label><br>
-                <input type="password" name="password"><br>
-                <label>Email:</label><br>
-                <input type="email" name="email"><br>
-                <button type="submit">register</button>
-            </form>
+            <div class="forms">
+
+                {% if erro %}<p style="color: red;">{{ erro }}</p>{% endif %}
+                <div id="left-form">
+                    <form method="post">
+                        {% csrf_token %}
+                        <label>Username:</label><br>
+                        <input type="text" name="username"><br>
+                        <label>Password:</label><br>
+                        <input type="password" name="password"><br>
+                        <label>Email:</label><br>
+                        <input type="email" name="email"><br>
+                        <div id="middle" class="switch-linkmiddle">
+                            <p id="litle-text">have an account? <a id="register-link" href="/login/"> login</a></p>
+                        </div>
+                </div>
+                <div id="left-form">
+                    <div class="small-input">
+                        <label>City:</label><br><br>
+                        <input type="text" name="city"><br><br>
+                        <label>State:</label><br><br>
+                    </div>
+                    <input type="text" name="state"><br><br>
+                    <label>Address:</label><br><br>
+                    <input type="text" name="address"><br><br>
+                    <label>Phone:</label><br><br>
+                    <input type="number" name="phone"><br><br>
+                    <button class="submit-btn" type="submit">register</button>
+                    </form>
+                </div>
+            </div>
             <div class="switch-link">
                 <p id="litle-text">have an account? <a id="register-link" href="/login/"> login</a></p>
             </div>
+
+
         </div>
     </main>
 </body>
