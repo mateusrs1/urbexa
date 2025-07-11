@@ -23,14 +23,17 @@
                 <div class="nav-right">
                     <ul class="btn-header">
                         <li><a class="head-btn li-title" href="products">Product</a></li>
-                        <li><a class="li-title" onclick="moveimg()">About</a></li>
-                        <li><a class="li-title" href="cart">cart</a></li>
-                        {%if user.is_authenticated%} <li><a href="auth/user" class="li-title">{{ username }}</a>
-                        </li>
+                        <li><a class="li-title" href="cart">Cart</a></li>
+                        {%if user.is_authenticated%} <li><a href="auth/user" class="li-title">{{ username }}</a></li>
                         {%else%} <li><a class="li-title" href="login">login</a></li> {%endif%}
-                        <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
-
-
+                        <li class="dropdown">
+                            <button class="menu-toggle" onclick="cascate()" aria-label="Abrir menu">&#9776;</button>
+                            <ul id="dropdown-menu" class="dropdown-menu">
+                                <li><a href="/auth/user">Perfil</a></li>
+                                <li><a href="/products">Products</a></li>
+                                <li><a href="/cart">Cart</a></li>
+                            </ul>
+                        </li>
                         <a href="auth/user"><img class="perfil" src="{% static 'images/user-perfil.png' %}"></a>
 
                     </ul>
@@ -58,8 +61,26 @@
             </div>
 
         </div>
-
+        <div class="products-cont">
+            <h1>Urbexa</h1>
+        </div>
     </main>
+
+    <script>
+        function cascate() {
+            const menu = document.getElementById("dropdown-menu");
+            menu.style.display = (menu.style.display === "block") ? "none" : "block";
+        }
+
+        // Fecha se clicar fora
+        window.addEventListener('click', function (e) {
+            const menu = document.getElementById("dropdown-menu");
+            if (!e.target.closest('.dropdown')) {
+                menu.style.display = "none";
+            }
+        });
+    </script>
+
 
     <script>
 

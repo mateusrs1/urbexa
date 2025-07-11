@@ -4,35 +4,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>register - page</title>
+    <title>edit user - page</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">]
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
     <script>
         function goto(url) {
             window.location.href = url;
         }
     </script>
+    <style>
+        .center-container {
+            display: flex;
+            justify-content: center;
+            margin: 0px 0;
+        }
+
+        .profile-upload {
+            position: relative;
+            padding: 0px;
+            width: 9.5vh;
+            height: 9.5vh;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #111827;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-upload img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-upload input[type="file"] {
+            display: none;
+        }
+    </style>
+
 </head>
 
 <body>
-    <p id="arrow" onclick="goto('../user')">➜</p>
+    <p id="arrow" onclick="goto('../../auth/user')">➜</p>
     <main>
-
         <div class="auth-container">
-            <h1>Edit</h1><br>
-            {% if erro %}<p style="color: red;">{{ erro }}</p>{% endif %}
-            <form method="post">
-                {% csrf_token %}
-                <label>Username:</label><br>
-                <input type="text" name="username" value="{{username}}"><br>
-                <label>Address:</label><br>
-                <input type="text" name="phone" value=""><br>
-                <label>Phone:</label><br>
-                <input type="number" name="number" value=""><br>
-                <button type="submit">Finish</button>
-            </form>
+            <h1>Edit User</h1><br>
+            <div class="forms">
+
+                {% if erro %}<p style="color: red;">{{ erro }}</p>{% endif %}
+                <div id="left-form">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="profile-pic">Perfil:</label>
+                        <div class="center-container">
+                            <label class="profile-upload">
+                                <img src="{% static 'images/user-perfil.png' %}" id="preview-img" alt="perfil">
+                                <input type="file" id="profile-pic" name="img" accept="image/*"
+                                    onchange="previewImage(event)">
+                            </label>
+                        </div>
+                        <div class="small-input">
+                            <label>City:</label><br><br>
+                            <input type="text" name="city"><br><br>
+                            <label>State:</label><br><br>
+                            <input type="text" name="state"><br><br>
+                        </div>
+                </div>
+                <div id="left-form">
+
+
+                    <label>Address:</label><br><br>
+                    <input type="text" name="address"><br><br>
+                    <label>Phone:</label><br><br>
+                    <input type="number" name="phone"><br><br><br>
+                    <button class="submit-btn" type="submit">register</button>
+                    </form>
+                </div>
+            </div>
+
+
         </div>
     </main>
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                const imgElement = document.getElementById('preview-img');
+                imgElement.src = reader.result;
+            };
+
+            if (input.files && input.files[0]) {
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -44,11 +44,12 @@ def register_views(request):
         state = request.POST['state']
         address = request.POST['address']
         phone = request.POST['phone']
+        img = request.FILES.get('img')
 
         if CustomUser.objects.filter(username = username).exists():
             return render(request, 'login/register.html', {"erro" : "user exists"})
         
-        user = CustomUser.objects.create_user(username=username, email=email, password=password, phone=phone, address=address, city=city, state=state)
+        user = CustomUser.objects.create_user(username=username, email=email, password=password, phone=phone, address=address, city=city, state=state, img=img)
         user.save()
 
         return redirect('login')
@@ -123,9 +124,18 @@ def user_views(request):
     if request.user.is_authenticated:
         username = request.user.username
         email = request.user.email
+        address = request.user.address
+        state = request.user.state
+        city = request.user.city
+        phone = request.user.phone
+
         context = {
         'username' : username,
         'email' : email,
+        'address' : address,
+        'state' : state,
+        'city' : city,
+        'phone' :phone
         }
         return render(request, 'login/user.html',context)
     else: 

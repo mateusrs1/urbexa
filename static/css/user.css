@@ -23,6 +23,7 @@ body {
     padding-top: 10vh;
     display: flex;
     animation: fadeIn 0.6s ease-in-out;
+
 }
 
 .user {
@@ -35,13 +36,14 @@ body {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     overflow-x: hidden;
     animation: fadeIn 0.6s ease-in-out;
+    margin-bottom: 6vh;
 }
 
 
 
 .img-perfil {
     cursor: pointer;
-    width: 100%;
+    width: 50vh;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     filter: drop-shadow(0px 4px 48px rgb(156, 156, 156));
@@ -86,23 +88,23 @@ p {
     text-align: left;
     color: #111827;
     animation: fadeIn 0.6s ease-in-out;
-    margin-left: 10%;
+    margin-left: 5%;
     text-shadow: 0 8px 24px rgb(161, 161, 161);
 }
 
 .user h1 {
     font-size: 32px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .user h4 {
     font-size: 16pt;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .user p {
-    font-size: 16pt;
-    margin-bottom: 10px;
+    font-size: 15pt;
+    margin-bottom: 3px;
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
     padding: 5px;
@@ -125,6 +127,7 @@ p {
 }
 
 .btn-buy {
+
     margin-top: auto;
     padding: 12px;
     background-color: #111827;
@@ -134,12 +137,13 @@ p {
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: 0.9s;
     width: 100%;
 }
 
 .btn-edit,
 .btn-logout {
+    filter: drop-shadow(0px 0px 5px rgb(88, 88, 88, 0.5));
     margin: 4px;
     padding: 12px;
     color: white;
@@ -148,7 +152,7 @@ p {
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: 0.9s;
     width: 80%;
 
 }
@@ -162,11 +166,13 @@ p {
 }
 
 .btn-edit:hover {
+    filter: drop-shadow(0px 0px 5px rgb(3, 0, 160));
     background-color: #212d4b;
     transition: 0.3s;
 }
 
 .btn-logout:hover {
+    filter: drop-shadow(0px 0px 5px rgba(255, 0, 0, 1));
     background-color: rgb(233, 52, 52);
     transition: 0.3s;
 }
@@ -194,8 +200,10 @@ p {
     .user-right {}
 
     .img-perfil {
-        width: 80%;
-        filter: drop-shadow(0px 4px 48px rgb(156, 156, 156))
+        width: 60%;
+        filter: drop-shadow(0px 4px 48px rgb(156, 156, 156));
+        border: 3px solid #888888;
+        margin: 0px;
     }
 
     .user-left {
@@ -206,19 +214,22 @@ p {
     }
 
     .user {
-        padding: 15px;
+        padding: 0px 15px 15px 15px;
         width: 80%;
         display: block;
     }
 
-    .user h1 {
-        font-size: 24px;
+    .cont-user {
+        padding-top: 4vh;
+
     }
 
     .cont-logo {
         align-items: center;
         justify-content: center;
         display: flex;
+        margin: 0px;
+        padding: 0px;
     }
 
     .logo {
@@ -227,17 +238,17 @@ p {
 
     .user h1 {
         font-size: 20px;
-        margin-bottom: 10px;
+        margin-bottom: 0px;
     }
 
     .user h4 {
         font-size: 12pt;
-        margin-bottom: 2px;
+        margin-bottom: 0px;
     }
 
     .user p {
         font-size: 12pt;
-        margin-bottom: 5px;
+        margin-bottom: 0px;
     }
 
 }

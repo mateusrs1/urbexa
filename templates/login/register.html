@@ -12,6 +12,39 @@
             window.location.href = url;
         }
     </script>
+    <style>
+        .center-container {
+            display: flex;
+            justify-content: center;
+            margin: 0px 0;
+        }
+
+        .profile-upload {
+            position: relative;
+            padding: 0px;
+            width: 10vh;
+            height: 10vh;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #111827;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-upload img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-upload input[type="file"] {
+            display: none;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -23,7 +56,7 @@
 
                 {% if erro %}<p style="color: red;">{{ erro }}</p>{% endif %}
                 <div id="left-form">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <label>Username:</label><br>
                         <input type="text" name="username"><br>
@@ -31,6 +64,15 @@
                         <input type="password" name="password"><br>
                         <label>Email:</label><br>
                         <input type="email" name="email"><br>
+                        <label for="profile-pic">Perfil:</label>
+                        <div class="center-container">
+                            <label class="profile-upload">
+                                <img src="{% static 'images/user-perfil.png' %}" id="preview-img" alt="perfil">
+                                <input type="file" id="profile-pic" name="img" accept="image/*"
+                                    onchange="previewImage(event)">
+                            </label>
+                        </div>
+
                         <div id="middle" class="switch-linkmiddle">
                             <p id="litle-text">have an account? <a id="register-link" href="/login/"> login</a></p>
                         </div>
@@ -57,6 +99,21 @@
 
         </div>
     </main>
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                const imgElement = document.getElementById('preview-img');
+                imgElement.src = reader.result;
+            };
+
+            if (input.files && input.files[0]) {
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </body>
 
 </html>
