@@ -61,7 +61,8 @@ body {
     align-items: stretch;
 }
 
-.product-card {
+.product-card,
+.product-card-ii {
     flex-direction: column;
     background-color: white;
     border-radius: 10px;
@@ -105,10 +106,43 @@ body {
 
 }
 
+#center {
+    width: 40%;
+}
+
 .product-price {
     margin: 5px;
     color: rgb(0, 65, 0);
 }
+
+.alert-div {
+    display: block;
+    position: relative;
+
+}
+
+.alert {
+    font-family: "Cal Sans", sans-serif;
+    font-weight: bold;
+    font-size: 11pt;
+    position: absolute;
+    top: 10px;
+    left: 40%;
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    animation: fadeIn 0.6s ease-in-out;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+.alert.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
 
 @keyframes fadeIn {
     from {
@@ -131,5 +165,9 @@ body {
 
     .logo {
         width: 70%;
+    }
+
+    .product-card-ii {
+        display: none;
     }
 }

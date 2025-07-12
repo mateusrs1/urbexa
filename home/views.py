@@ -9,12 +9,17 @@ from django.contrib import messages
 # Create your views here.
 
 def home_views(request):
-    username = 'none',
+    products = Product.objects.all()
+    username = 'none'
+    img = '/static/images/user-perfil.png'
     if request.user.is_authenticated:
             username = request.user.username
-    
+            if hasattr(request.user, 'img') and request.user.img:
+                img = request.user.img.url
     context = {
         'username' : username,
+        'img' : img,
+        'products' : products
     }
 
     return render(request, 'home/home.html', context)
@@ -93,6 +98,10 @@ def cartrem_views(request, cart_id):
         item.delete() 
     return redirect('cart')
 
+def cartfinish_views(request):
+    messages.error(request, 'You need to pay, but the site ends here')
+    return redirect('home')
+
 def products_views(request):
     products = Product.objects.all()
     
@@ -114,8 +123,9 @@ def addproductstocart_views(request, product_id):
         if not created:
             cart_item.quant += 1
             cart_item.save()
-
-        return redirect('cart')
+        messages.error(request, 'product added to cart!')
+        return redirect('products')
+        
     else:
         return redirect('login')
 
@@ -128,6 +138,7 @@ def user_views(request):
         state = request.user.state
         city = request.user.city
         phone = request.user.phone
+        img = request.user.img.url if request.user.img and request.user.img.name else '/static/images/user-perfil.png'
 
         context = {
         'username' : username,
@@ -135,22 +146,42 @@ def user_views(request):
         'address' : address,
         'state' : state,
         'city' : city,
-        'phone' :phone
+        'phone' :phone,
+        'img' : img
         }
+
         return render(request, 'login/user.html',context)
     else: 
         messages.error(request, 'You need to join.')
         return redirect('home')
     
 def edituser_view(request):
-    if request.user.is_authenticated:
-        username = request.user.username
-        email = request.user.email
-        context = {
-        'username' : username,
-        'email' : email,
-        }
-        return render(request, 'login/edit.html',context)
+    user = request.user
+
+    if request.method == 'POST':
+        user.city = request.POST.get('city')
+        user.state = request.POST.get('state')
+        user.address = request.POST.get('address')
+        user.phone = request.POST.get('phone')
+
+        if 'img' in request.FILES and request.FILES['img']:
+            user.img = request.FILES['img']
+
+        user.save()
+        messages.success(request, 'Informações atualizadas com sucesso!')
+        return redirect('user')  # redireciona para a view de perfil
+
+    context = {
+        'username': user.username,
+        'email': user.email,
+        'address': user.address,
+        'state': user.state,
+        'city': user.city,
+        'phone': user.phone,
+        'img': user.img.url if user.img and hasattr(user.img, 'url') else '/static/images/user-perfil.png',
+    }
+
+    return render(request, 'login/edit.html', context)
     
 def edituserimg_view(request):
     

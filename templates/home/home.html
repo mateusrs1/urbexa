@@ -7,7 +7,13 @@
     {% load static %}
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/products.css' %}" />
     <title>URBEXA</title>
+    <script>
+        function goto(url) {
+            window.location.href = url;
+        }
+    </script>
 
 </head>
 
@@ -34,7 +40,8 @@
                                 <li><a href="/cart">Cart</a></li>
                             </ul>
                         </li>
-                        <a href="auth/user"><img class="perfil" src="{% static 'images/user-perfil.png' %}"></a>
+                        <a href="auth/user"><img class="perfil" src="{{ img }}"></a>
+
 
                     </ul>
                 </div>
@@ -47,11 +54,25 @@
         </div>
 
         <div class="container-box">
-            <div class="box left">
-                <h1>Fashion</h1>
+
+            <div class="box right py-16 px-6 md:px-20 flex-1">
+                <h1
+                    class="pr-3 pl-3 mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white">
+                    WHERE THE STREET SPEACKS
+                </h1>
+
+                <p
+                    class="text-xs sm:text-base md:text-lg lg:text-xl text-white leading-relaxed font-medium tracking-wide px-4 sm:px-6 max-w-screen-sm mx-auto break-words text-justify">
+                    Urbexa was born from the concrete, from alleyways, skate parks, graffiti walls, and the rhythm of
+                    the underground. We’re not just a brand, we’re a movement. A voice for those who walk with attitude,
+                    live with authenticity, and wear the city like a second skin.
+                </p>
+
             </div>
-            <div class="box right">
-                <h1>Fashion</h1>
+
+            <div class="box left flex-1">
+                <img class="object-cover right-img" src="{% static 'images/logo2.png' %}">
+
             </div>
         </div>
 
@@ -61,9 +82,50 @@
             </div>
 
         </div>
-        <div class="products-cont">
-            <h1>Urbexa</h1>
+        <div class="products-cont justify-content-center align-items-center m-auto">
+            <h1
+                class="text-center pb-25 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-black">
+                SEE THE NEW</h1>
+            <div class="cont-products">
+
+                <div class="product-card">
+                    <img class="product-img" src="{%static 'images/products-img/shirt3.jpg'%}" alt="shirt">
+                    <h1 class="product-name">shirt</h1>
+                    <h4 class="product-price">R$ 65.00</h4>
+                    <button onclick="goto('../products/addtocart/{{ product.id }}/')" class="btn-buy">buy</button>
+                </div>
+                <div class="product-card-ii">
+                    <img class="product-img ii" src="{%static 'images/products-img/shirt2.jpg'%}" alt="shirt">
+                    <h1 class="product-name ii">shirt</h1>
+                    <h4 class="product-price ii">R$ 65.00</h4>
+                    <button onclick="goto('../products/addtocart/{{ product.id }}/')" class="btn-buy ii">buy</button>
+                </div>
+                <div class="product-card-ii">
+                    <img class="product-img ii" src="{%static 'images/products-img/shirt1.jpg'%}" alt="shirt">
+                    <h1 class="product-name ii">shirt</h1>
+                    <h4 class="product-price ii">R$ 65.00</h4>
+                    <button onclick="goto('../products/addtocart/{{ product.id }}/')" class="btn-buy ii">buy</button>
+                </div>
+
+            </div>
+            <div class="flex justify-center">
+                <button style="" onclick="goto('/products')" class="sm:w-1/2 btn-buy mt-5">see more!</button>
+            </div>
         </div>
+
+        <footer class="pt-2 bg-red-500 flex flex-col items-center justify-center text-center space-y-6">
+            <h1
+                class="bg-red-500 text-center pb-25 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                CALL US</h1>
+            <div class="fotter-ul">
+                <ul class="mb-10 mt-0 flex flex-col md:flex-row gap-4 md:gap-8 text-white text-lg font-medium">
+                    <li><a href="#" class="hover:underline">PPRODUCTS</a></li>
+                    <li><a href="#" class="hover:underline">PERFIL</a></li>
+                    <li><a href="#" class="hover:underline">HOME</a></li>
+                    <li><a href="mailto:support@urbexa.com" class="hover:underline">support@urbexa.com</a></li>
+                </ul>
+            </div>
+        </footer>
     </main>
 
     <script>

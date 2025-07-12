@@ -31,8 +31,7 @@
     <container class="cont-user">
         <div class="user">
             <div class="user-left">
-                <img onclick="goto('../auth/user/edit/img')" class="img-perfil"
-                    src="{% static 'images/1000_F_548477704_fYSpo7TRTtKlIq9C2QZ0KczwJWSSMJgl.jpg' %}" alt="img">
+                <img onclick="goto('../auth/user/edit/img')" class="img-perfil" src="{{img}}" alt="img">
             </div>
             <div class=" user-right">
                 <h1>{{username}}</h1>
@@ -56,7 +55,26 @@
             </div>
         </div>
     </container>
+    <div class="alertdiv">
+        {% for message in messages %}
+        <p class="alert" href="">{{message}}</p>
+        {% endfor %}
+    </div>
+    <script>
 
+
+        const delay = 1500; // 3 segundos
+        const alerts = document.querySelectorAll('.alert');
+
+
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                alert.classList.add('hide');
+            }, delay);
+        });
+
+
+    </script>
 </body>
 
 </html>

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cart - URBEXA</title>
     {% load static %}
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{% static 'css/cart.css' %}">
     <script>
         function goto(url) {
@@ -17,14 +18,19 @@
 </head>
 
 <body>
+
     <Header>
         <div class="header">
             <div class="cont-logo">
                 <img onclick="goto('../..')" class="logo" src="{% static 'images/logo.png' %}">
             </div>
-
+            <h2 class="text-xl font-size absolute -top-1 right-2 p-4 text-black font-bold cursor-pointer "
+                onclick="goto('../products')">
+                Products
+            </h2>
         </div>
     </Header>
+
     <container class="cont-cart">
         <div class="cart">
             <h1>My Products</h1>
@@ -56,7 +62,7 @@
 
             </table>
             <h3 id="total">R$ {{total}}</h3>
-            <button class="btn-buy">pay</button>
+            <button class="btn-buy" onclick="goto('../cart/finish')">pay</button>
         </div>
     </container>
 

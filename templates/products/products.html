@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products - URBEXA</title>
     {% load static %}
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{% static 'css/products.css' %}">
+
     <script>
 
         function goto(url) {
@@ -22,13 +24,21 @@
             <div class="cont-logo">
                 <img onclick="goto('../..')" class="logo" src="{% static 'images/logo.png' %}">
             </div>
+            <h2 class="text-xl font-size absolute -top-1 right-2 p-4 text-black font-bold cursor-pointer "
+                onclick="goto('../cart')">
+                Cart
+            </h2>
 
         </div>
         <script>
 
         </script>
     </Header>
-
+    <div class="alertdiv">
+        {% for message in messages %}
+        <p class="alert" href="">{{message}}</p>
+        {% endfor %}
+    </div>
     <div class="cont-products">
         {% for product in products %}
         <div class="product-card">
@@ -39,7 +49,21 @@
         </div>
         {%endfor%}
     </div>
+    <script>
 
+
+        const delay = 1500; // 3 segundos
+        const alerts = document.querySelectorAll('.alert');
+
+
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                alert.classList.add('hide');
+            }, delay);
+        });
+
+
+    </script>
 </body>
 
 </html>

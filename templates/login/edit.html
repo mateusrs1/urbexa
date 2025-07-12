@@ -56,31 +56,32 @@
 
                 {% if erro %}<p style="color: red;">{{ erro }}</p>{% endif %}
                 <div id="left-form">
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" action="{% url 'edit' %}">
                         {% csrf_token %}
                         <label for="profile-pic">Perfil:</label>
                         <div class="center-container">
                             <label class="profile-upload">
-                                <img src="{% static 'images/user-perfil.png' %}" id="preview-img" alt="perfil">
+                                <img src="{% if user.img %}{{ user.img.url }}{% else %}{% static 'images/user-perfil.png' %}{% endif %}"
+                                    id="preview-img" alt="perfil">
                                 <input type="file" id="profile-pic" name="img" accept="image/*"
                                     onchange="previewImage(event)">
                             </label>
                         </div>
                         <div class="small-input">
                             <label>City:</label><br><br>
-                            <input type="text" name="city"><br><br>
+                            <input type="text" name="city" value="{{city}}"><br><br>
                             <label>State:</label><br><br>
-                            <input type="text" name="state"><br><br>
+                            <input type="text" name="state" value="{{state}}"><br><br>
                         </div>
                 </div>
                 <div id="left-form">
 
 
                     <label>Address:</label><br><br>
-                    <input type="text" name="address"><br><br>
+                    <input type="text" name="address" value="{{address}}"><br><br>
                     <label>Phone:</label><br><br>
-                    <input type="number" name="phone"><br><br><br>
-                    <button class="submit-btn" type="submit">register</button>
+                    <input type="number" name="phone" value="{{phone}}"><br><br><br>
+                    <button class="submit-btn" type="submit">finish</button>
                     </form>
                 </div>
             </div>
